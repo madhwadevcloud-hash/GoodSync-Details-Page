@@ -109,13 +109,13 @@ const ContactOptions = () => {
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="mailto:hello@GOODSYNK ERP.com" className="text-slate-900 font-bold hover:text-indigo-600 transition-colors flex items-center gap-2">
+            <a href="mailto:info@ssinphinite.org" className="text-slate-900 font-bold hover:text-indigo-600 transition-colors flex items-center gap-2">
               <Mail className="w-4 h-4 text-slate-400" />
-              hello@GOODSYNK ERP.com
+              info@ssinphinite.org
             </a>
             <a href="tel:+18001234567" className="text-slate-900 font-bold hover:text-indigo-600 transition-colors flex items-center gap-2">
               <Phone className="w-4 h-4 text-slate-400" />
-              +1 800 123 4567
+              +91 70263 70266
             </a>
           </div>
         </motion.div>
