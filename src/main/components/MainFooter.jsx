@@ -35,11 +35,11 @@ const MainFooter = () => (
         {/* Contact */}
         <div className="space-y-4">
           <p className="text-slate-900 font-black text-sm uppercase tracking-widest">Get In Touch</p>
-          <a href="mailto:hello@goodsync.in" className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors text-sm font-medium">
-            <Mail className="w-4 h-4" /> hello@goodsync.in
+          <a href="mailto:info@ssinphinite.org" className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors text-sm font-medium">
+            <Mail className="w-4 h-4" /> info@ssinphinite.org
           </a>
-          <a href="tel:+91" className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors text-sm font-medium">
-            <Phone className="w-4 h-4" /> +91 (Contact Sales)
+          <a href="tel:+91  7026370266" className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors text-sm font-medium">
+            <Phone className="w-4 h-4" /> +91 70263 70266
           </a>
           <p className="flex items-start gap-2 text-slate-500 text-sm font-medium">
             <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" /> India
