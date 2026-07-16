@@ -41,7 +41,7 @@ const Navbar = () => {
             >
               <img
                 src="/fulllogocolor.png"
-                alt="GOODSYNK ERP Logo"
+                alt="GOODSYCK ERP Logo"
                 className="h-8 w-auto object-contain"
               />
             </motion.div>
@@ -76,7 +76,7 @@ const Navbar = () => {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-6">
             <a
-              href="https://erp.goodsynk.com/"
+              href="https://erp.goodsyck.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-base font-black text-slate-800 hover:text-indigo-600 transition-colors tracking-tight"

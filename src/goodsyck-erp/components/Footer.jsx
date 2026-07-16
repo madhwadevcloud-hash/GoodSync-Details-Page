@@ -66,7 +66,7 @@ const Footer = () => {
               <div className="space-y-4">
                 <FooterLink to="/erp/features">Feature Hub</FooterLink>
                 <FooterLink to="/erp/roles">User Roles</FooterLink>
-                <FooterLink href="/erp#why-goodsynk-erp">Why GOODSYNK ERP</FooterLink>
+                <FooterLink href="/erp#why-goodsyck-erp">Why GOODSYCK ERP</FooterLink>
                 <FooterLink href="/erp#workflow">How It Works</FooterLink>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import goodsyckLogo from '../../assets/goodsynk-nav-logo.png';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Phone, MapPin, Globe, AtSign, Code2 } from 'lucide-react';
@@ -9,7 +10,7 @@ const MainFooter = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         {/* Brand */}
         <div className="md:col-span-2 space-y-6">
-          <img src="/goodsynk.png" alt="Goodsync" className="h-10 w-auto object-contain" />
+          <img src={goodsyckLogo} alt="Goodsyck" className="h-16 w-auto object-contain" />
           <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
             Building the future of business operations — one intelligent software at a time.
           </p>
@@ -48,8 +49,8 @@ const MainFooter = () => (
       </div>
 
       <div className="border-t border-slate-200/60 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-slate-500 text-sm font-medium">© 2026 Goodsync. All rights reserved.</p>
-        <p className="text-slate-400 text-xs">Diligent & Smarter Business with Goodsync</p>
+        <p className="text-slate-500 text-sm font-medium">© 2026 Goodsyck. All rights reserved.</p>
+        <p className="text-slate-400 text-xs">Diligent & Smarter Business with Goodsyck</p>
       </div>
     </div>
   </footer>

@@ -66,7 +66,7 @@ const ContactOptions = () => {
           <ContactCard 
             icon={GraduationCap}
             title="Book a Live Demo"
-            desc="See GOODSYNK ERP in action. We'll walk you through all 11 modules and show you the exact impact on your school."
+            desc="See GOODSYCK ERP in action. We'll walk you through all 11 modules and show you the exact impact on your school."
             action="Schedule Now"
             link="/contact"
             color="bg-indigo-50 text-indigo-600"
@@ -102,7 +102,7 @@ const ContactOptions = () => {
           <div className="flex items-center gap-6">
              <div className="flex items-center gap-3">
                <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold">G</div>
-               <span className="font-bold text-slate-900">GOODSYNK ERP Global</span>
+               <span className="font-bold text-slate-900">GOODSYCK ERP Global</span>
              </div>
              <div className="h-4 w-px bg-slate-200 hidden md:block" />
              <p className="text-sm font-medium text-slate-500">Trusted by 500+ Institutions Worldwide</p>
