@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import goodsyckLogo from '../../assets/goodsynk-nav-logo.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
@@ -38,7 +39,7 @@ const MainNavbar = () => {
               transition={{ duration: 0.2 }}
               className="cursor-pointer"
             >
-              <img src="https://res.cloudinary.com/dgabaplay/image/upload/v1777631691/3_wqplpc.png" alt="Goodsync Logo" className="h-16 w-auto object-contain" />
+              <img src={goodsyckLogo} alt="Goodsyck Logo" className="h-16 w-auto object-contain" />
             </motion.div>
           </Link>
 
@@ -56,8 +57,6 @@ const MainNavbar = () => {
               </Link>
             ))}
           </div>
-
-
 
           {/* Mobile Toggle */}
           <div className="lg:hidden">

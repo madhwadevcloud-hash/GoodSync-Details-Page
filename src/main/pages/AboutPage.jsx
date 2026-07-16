@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Eye, Heart, Lightbulb, Users, Zap } from 'lucide-react';
 import MainNavbar from '../components/MainNavbar';
 import MainFooter from '../components/MainFooter';
-import AmbientBackground from '../../goodsynk-erp/components/AmbientBackground';
+import AmbientBackground from '../../goodsyck-erp/components/AmbientBackground';
 
 const VALUES = [
   { icon: Target, title: 'Precision', desc: 'Every feature is intentional. No bloat, no filler — just exactly what your operation needs.' },
@@ -16,10 +16,10 @@ const VALUES = [
 ];
 
 const MILESTONES = [
-  { year: '2024', title: 'Founded', desc: 'Goodsync was founded with a mission to make enterprise software accessible to every business.' },
-  { year: '2024', title: 'GOODSYNK ERP Beta', desc: 'Launched the first version of GOODSYNK ERP for school management in select institutions.' },
+  { year: '2024', title: 'Founded', desc: 'Goodsyck was founded with a mission to make enterprise software accessible to every business.' },
+  { year: '2024', title: 'GOODSYCK ERP Beta', desc: 'Launched the first version of GOODSYCK ERP for school management in select institutions.' },
   { year: '2025', title: '500+ Schools', desc: 'Crossed 500 active school partnerships with 2,000+ daily users on the platform.' },
-  { year: '2026', title: 'Multi-Product Vision', desc: 'Expanded the Goodsync product line to 6 verticals spanning ERP, billing, workflows, and learning.' },
+  { year: '2026', title: 'Multi-Product Vision', desc: 'Expanded the Goodsyck product line to 6 verticals spanning ERP, billing, workflows, and learning.' },
 ];
 
 const AboutPage = () => (
@@ -35,7 +35,7 @@ const AboutPage = () => (
           animate={{ opacity: 1, y: 0 }}
           className="inline-block text-indigo-600 font-black text-sm uppercase tracking-[0.2em] mb-6"
         >
-          About Goodsync
+          About Goodsyck
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ const AboutPage = () => (
           transition={{ delay: 0.2 }}
           className="text-slate-600 text-xl font-medium leading-relaxed max-w-3xl mx-auto"
         >
-          Goodsync is a software company on a mission to digitize and streamline operations for schools, enterprises, and businesses across India and beyond. We believe great software should be fast, simple, and powerful — without compromise.
+          Goodsyck is a software company on a mission to digitize and streamline operations for schools, enterprises, and businesses across India and beyond. We believe great software should be fast, simple, and powerful — without compromise.
         </motion.p>
       </div>
     </section>
@@ -73,7 +73,7 @@ const AboutPage = () => (
           },
           {
             label: 'Our Vision',
-            title: 'A world running on Goodsync.',
+            title: 'A world running on Goodsyck.',
             desc: 'We envision a future where every school, business, and institution runs on purpose-built software that\'s as intelligent as the people using it — freeing teams to focus on what truly matters.',
             color: 'bg-white',
             border: 'border-violet-100',
@@ -199,7 +199,7 @@ const AboutPage = () => (
             className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" 
           />
           <div className="relative z-10">
-            <h2 className="text-3xl font-black font-outfit mb-4 text-white">Join the Goodsync Journey</h2>
+            <h2 className="text-3xl font-black font-outfit mb-4 text-white">Join the Goodsyck Journey</h2>
             <p className="text-white/80 font-medium mb-8">We're building the future of business software. Be among the first.</p>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full">
               <Link to="/products" className="group flex items-center justify-center gap-2 bg-white text-indigo-600 px-7 py-3.5 rounded-2xl font-black hover:scale-105 transition-all shadow-xl w-full sm:w-auto">

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, MessageSquare, Clock, Globe } from 'lucide-react';
 import MainNavbar from '../components/MainNavbar';
 import MainFooter from '../components/MainFooter';
-import AmbientBackground from '../../goodsynk-erp/components/AmbientBackground';
+import AmbientBackground from '../../goodsyck-erp/components/AmbientBackground';
 
 const CONTACT_OPTIONS = [
   {
@@ -25,8 +25,8 @@ const CONTACT_OPTIONS = [
   },
   {
     icon: Globe,
-    title: 'GOODSYNK ERP',
-    desc: 'Already using GOODSYNK ERP? Visit the app.',
+    title: 'GOODSYCK ERP',
+    desc: 'Already using GOODSYCK ERP? Visit the app.',
     value: 'goodsync-8x4v.onrender.com',
     href: 'https://goodsync-8x4v.onrender.com',
     color: 'emerald',

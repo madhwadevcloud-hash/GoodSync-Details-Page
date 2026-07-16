@@ -1,36 +1,42 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'framer-motion'
 
-// Brand-level pages
-import MainHome from './main/pages/MainHome'
-import AllProductsPage from './main/pages/AllProductsPage'
-import AboutPage from './main/pages/AboutPage'
-import MainContactPage from './main/pages/MainContactPage'
+// Brand-level pages — lazy loaded
+const MainHome = lazy(() => import('./main/pages/MainHome'))
+const AllProductsPage = lazy(() => import('./main/pages/AllProductsPage'))
+const AboutPage = lazy(() => import('./main/pages/AboutPage'))
+const MainContactPage = lazy(() => import('./main/pages/MainContactPage'))
 
-// GOODSYNK ERP pages
-import Navbar from './goodsynk-erp/components/Navbar'
-import Hero from './goodsynk-erp/components/Hero'
-import Stats from './goodsynk-erp/components/Stats'
-import Problem from './goodsynk-erp/components/Problem'
-import Features from './goodsynk-erp/components/Features'
-import UserRoles from './goodsynk-erp/components/UserRoles'
-import WhyGOODSYNKERP from './goodsynk-erp/components/WhyGOODSYNKERP'
-import Workflow from './goodsynk-erp/components/Workflow'
-import CTA from './goodsynk-erp/components/CTA'
-import Footer from './goodsynk-erp/components/Footer'
-import FeaturesPage from './goodsynk-erp/pages/FeaturesPage'
-import RolesPage from './goodsynk-erp/pages/RolesPage'
-import ContactPage from './goodsynk-erp/pages/ContactPage'
-import ScrollToTop from './goodsynk-erp/components/ScrollToTop'
-import ContactOptions from './goodsynk-erp/components/ContactOptions'
+// GOODSYCK ERP pages — lazy loaded
+const Navbar = lazy(() => import('./goodsyck-erp/components/Navbar'))
+const Hero = lazy(() => import('./goodsyck-erp/components/Hero'))
+const Stats = lazy(() => import('./goodsyck-erp/components/Stats'))
+const Problem = lazy(() => import('./goodsyck-erp/components/Problem'))
+const Features = lazy(() => import('./goodsyck-erp/components/Features'))
+const UserRoles = lazy(() => import('./goodsyck-erp/components/UserRoles'))
+const WhyGOODSYCKERP = lazy(() => import('./goodsyck-erp/components/WhyGOODSYCKERP'))
+const Workflow = lazy(() => import('./goodsyck-erp/components/Workflow'))
+const CTA = lazy(() => import('./goodsyck-erp/components/CTA'))
+const Footer = lazy(() => import('./goodsyck-erp/components/Footer'))
+const FeaturesPage = lazy(() => import('./goodsyck-erp/pages/FeaturesPage'))
+const RolesPage = lazy(() => import('./goodsyck-erp/pages/RolesPage'))
+const ContactPage = lazy(() => import('./goodsyck-erp/pages/ContactPage'))
+const ScrollToTop = lazy(() => import('./goodsyck-erp/components/ScrollToTop'))
+const ContactOptions = lazy(() => import('./goodsyck-erp/components/ContactOptions'))
+
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+  </div>
+)
 
 const SectionReveal = ({ children }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-100px' }}
-    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    viewport={{ once: true, margin: '-80px' }}
+    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
   >
     {children}
   </motion.div>
@@ -44,8 +50,8 @@ function App() {
     restDelta: 0.001
   });
 
-  // GOODSYNK ERP product landing page
-  const GoodsynkERPPage = () => (
+  // GOODSYCK ERP product landing page
+  const GoodsyckERPPage = () => (
     <div className="min-h-screen bg-white font-inter text-slate-900 scroll-smooth selection:bg-indigo-600/30 selection:text-indigo-600 relative">
       <motion.div
         className="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-600 to-violet-600 origin-left z-[100]"
@@ -62,7 +68,7 @@ function App() {
         <SectionReveal><Problem /></SectionReveal>
         <SectionReveal><Features /></SectionReveal>
         <SectionReveal><UserRoles /></SectionReveal>
-        <SectionReveal><WhyGOODSYNKERP /></SectionReveal>
+        <SectionReveal><WhyGOODSYCKERP /></SectionReveal>
         <SectionReveal><Workflow /></SectionReveal>
         <SectionReveal><CTA /></SectionReveal>
         <SectionReveal><ContactOptions /></SectionReveal>
@@ -72,7 +78,7 @@ function App() {
   );
 
   return (
-    <>
+    <Suspense fallback={<PageLoader />}>
       <ScrollToTop />
       <Routes>
         {/* ── Brand-level pages ── */}
@@ -81,8 +87,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/main-contact" element={<MainContactPage />} />
 
-        {/* ── GOODSYNK ERP product pages ── */}
-        <Route path="/erp" element={<GoodsynkERPPage />} />
+        {/* ── GOODSYCK ERP product pages ── */}
+        <Route path="/erp" element={<GoodsyckERPPage />} />
         <Route path="/erp/features" element={<FeaturesPage />} />
         <Route path="/erp/roles" element={<RolesPage />} />
         <Route path="/erp/contact" element={<ContactPage />} />
@@ -92,8 +98,9 @@ function App() {
         <Route path="/roles" element={<RolesPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
-    </>
+    </Suspense>
   );
 }
 
 export default App
+

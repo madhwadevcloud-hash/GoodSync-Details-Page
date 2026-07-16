@@ -1,4 +1,5 @@
 import React from 'react';
+import heroLogo from '../../assets/goodsynk-hero-logo.png';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -7,13 +8,13 @@ import {
 } from 'lucide-react';
 import MainNavbar from '../components/MainNavbar';
 import MainFooter from '../components/MainFooter';
-import AmbientBackground from '../../goodsynk-erp/components/AmbientBackground';
+import AmbientBackground from '../../goodsyck-erp/components/AmbientBackground';
 
 const PRODUCTS = [
   {
-    id: 'goodsynk-erp',
+    id: 'goodsyck-erp',
     icon: GraduationCap,
-    name: 'GOODSYNK ERP',
+    name: 'GOODSYCK ERP',
     tagline: 'Complete School Management System',
     desc: 'An all-in-one ERP for schools — attendance, results, fees, ID cards, and more. Used by 500+ institutions.',
     status: 'live',
@@ -23,7 +24,7 @@ const PRODUCTS = [
   {
     id: 'enterprise-erp',
     icon: Building2,
-    name: 'Goodsynk Enterprise ERP',
+    name: 'Goodsyck Enterprise ERP',
     tagline: 'Advanced enterprise-grade ERP system.',
     desc: 'A powerful enterprise resource planning solution built for large-scale operations and complex workflows.',
     status: 'coming',
@@ -33,7 +34,7 @@ const PRODUCTS = [
   {
     id: 'invoice',
     icon: FileText,
-    name: 'Goodsynk Invoice',
+    name: 'Goodsyck Invoice',
     tagline: 'Smart invoicing solution.',
     desc: 'Streamlined billing operations with smart invoice generation, tracking, and client management.',
     status: 'coming',
@@ -43,7 +44,7 @@ const PRODUCTS = [
   {
     id: 'billing',
     icon: CreditCard,
-    name: 'Goodsynk Billing Software',
+    name: 'Goodsyck Billing Software',
     tagline: 'End-to-end billing & transaction management.',
     desc: 'Complete billing and transaction management system for seamless financial operations.',
     status: 'coming',
@@ -53,7 +54,7 @@ const PRODUCTS = [
   {
     id: 'workflow',
     icon: GitBranch,
-    name: 'Goodsynk Workflow Management',
+    name: 'Goodsyck Workflow Management',
     tagline: 'Automates business processes.',
     desc: 'Intelligent automation that optimizes every business process and workflow in your organization.',
     status: 'coming',
@@ -63,7 +64,7 @@ const PRODUCTS = [
   {
     id: 'learn',
     icon: BookOpen,
-    name: 'Learn with Goodsynk',
+    name: 'Learn with Goodsyck',
     tagline: 'Learning platform for skill development.',
     desc: 'A comprehensive training and skill development platform for teams, students, and professionals.',
     status: 'coming',
@@ -111,7 +112,7 @@ const MainHome = () => (
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <img
-            src="https://res.cloudinary.com/dgabaplay/image/upload/v1777631691/2_usc5vr.png"
+            src={heroLogo}
             alt="Goodsync"
             className="h-40 md:h-48 lg:h-60 w-auto object-contain mx-auto mb-6 drop-shadow-sm"
           />
@@ -155,7 +156,7 @@ const MainHome = () => (
             to="/erp"
             className="flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-800 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all shadow-sm w-full sm:w-auto"
           >
-            View GOODSYNK ERP
+            View GOODSYCK ERP
           </Link>
         </motion.div>
       </div>
@@ -325,14 +326,14 @@ const MainHome = () => (
               Ready to Transform Your Operations?
             </h2>
             <p className="text-white/80 text-xl font-medium mb-10 max-w-2xl mx-auto">
-              Start with GOODSYNK ERP today or get in touch to learn what's coming next.
+              Start with GOODSYCK ERP today or get in touch to learn what's coming next.
             </p>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full">
               <Link
                 to="/erp"
                 className="group flex items-center justify-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-xl w-full sm:w-auto"
               >
-                Explore GOODSYNK ERP
+                Explore GOODSYCK ERP
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link

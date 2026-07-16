@@ -24,7 +24,7 @@ const USPItem = ({ icon: Icon, title, desc, index }) => (
   </motion.div>
 );
 
-const WhyGOODSYNKERP = () => {
+const WhyGOODSYCKERP = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
@@ -32,7 +32,7 @@ const WhyGOODSYNKERP = () => {
     {
       icon: LayoutDashboard,
       title: "End-to-End School Digitization",
-      desc: "GOODSYNK ERP covers the most operationally critical workflows in a single platform, eliminating tool sprawl and manual consolidation."
+      desc: "GOODSYCK ERP covers the most operationally critical workflows in a single platform, eliminating tool sprawl and manual consolidation."
     },
     {
       icon: ShieldCheck,
@@ -57,7 +57,7 @@ const WhyGOODSYNKERP = () => {
   ];
 
   return (
-    <section id="why-goodsynk-erp" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden relative">
+    <section id="why-goodsyck-erp" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden relative">
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
 
         {/* Left: Text & USPs */}
@@ -65,7 +65,7 @@ const WhyGOODSYNKERP = () => {
           <div className="space-y-10 group">
             <span className="text-indigo-600 font-black text-sm uppercase tracking-[0.2em] px-4 py-1 border-l-4 border-indigo-600">Unique Selling Points</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-[950] font-outfit text-slate-900 leading-tight tracking-[-0.02em]">
-              Why Choose <br /> <span className="text-indigo-600">GOODSYNK ERP?</span>
+              Why Choose <br /> <span className="text-indigo-600">GOODSYCK ERP?</span>
             </h2>
           </div>
 
@@ -105,4 +105,4 @@ const WhyGOODSYNKERP = () => {
   );
 };
 
-export default WhyGOODSYNKERP;
+export default WhyGOODSYCKERP;

@@ -7,13 +7,13 @@ import {
 } from 'lucide-react';
 import MainNavbar from '../components/MainNavbar';
 import MainFooter from '../components/MainFooter';
-import AmbientBackground from '../../goodsynk-erp/components/AmbientBackground';
+import AmbientBackground from '../../goodsyck-erp/components/AmbientBackground';
 
 const PRODUCTS = [
   {
-    id: 'goodsynk-erp',
+    id: 'goodsyck-erp',
     icon: GraduationCap,
-    name: 'GOODSYNK ERP',
+    name: 'GOODSYCK ERP',
     tagline: 'Complete School Management System',
     desc: 'An all-in-one school ERP covering student data, attendance, marks, fees, communication, ID cards, hall tickets, and deep reporting. Used by 500+ schools with 2,000+ daily active users.',
     status: 'live',
@@ -25,7 +25,7 @@ const PRODUCTS = [
   {
     id: 'enterprise-erp',
     icon: Building2,
-    name: 'Goodsynk Enterprise ERP',
+    name: 'Goodsyck Enterprise ERP',
     tagline: 'Advanced enterprise-grade ERP system.',
     desc: 'A powerful enterprise resource planning solution built for large-scale operations, multi-department workflows, and complex organizational hierarchies.',
     status: 'coming',
@@ -36,7 +36,7 @@ const PRODUCTS = [
   {
     id: 'invoice',
     icon: FileText,
-    name: 'Goodsynk Invoice',
+    name: 'Goodsyck Invoice',
     tagline: 'Smart invoicing for streamlined billing.',
     desc: 'Intelligent invoice generation, tracking, and client management — automated and designed to eliminate billing friction.',
     status: 'coming',
@@ -46,7 +46,7 @@ const PRODUCTS = [
   {
     id: 'billing',
     icon: CreditCard,
-    name: 'Goodsynk Billing Software',
+    name: 'Goodsyck Billing Software',
     tagline: 'End-to-end billing & transaction management.',
     desc: 'Complete billing and transaction management for seamless financial operations, reconciliation, and compliance.',
     status: 'coming',
@@ -57,7 +57,7 @@ const PRODUCTS = [
   {
     id: 'workflow',
     icon: GitBranch,
-    name: 'Goodsynk Workflow Management',
+    name: 'Goodsyck Workflow Management',
     tagline: 'Automates and optimizes business processes.',
     desc: 'Drag-and-drop workflow automation that maps, optimizes, and automates every business process in your organization.',
     status: 'coming',
@@ -67,7 +67,7 @@ const PRODUCTS = [
   {
     id: 'learn',
     icon: BookOpen,
-    name: 'Learn with Goodsynk',
+    name: 'Learn with Goodsyck',
     tagline: 'Learning platform for training & skill development.',
     desc: 'A comprehensive learning management system for teams, students, and professionals to build skills at scale.',
     status: 'coming',
@@ -128,7 +128,7 @@ const AllProductsPage = () => {
           >
             Everything{' '}
             <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
-              Goodsync
+              Goodsyck
             </span>{' '}
             Builds
           </motion.h1>
