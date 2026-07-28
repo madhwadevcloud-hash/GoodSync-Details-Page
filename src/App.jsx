@@ -22,6 +22,7 @@ const Footer = lazy(() => import('./goodsyck-erp/components/Footer'))
 const FeaturesPage = lazy(() => import('./goodsyck-erp/pages/FeaturesPage'))
 const RolesPage = lazy(() => import('./goodsyck-erp/pages/RolesPage'))
 const ContactPage = lazy(() => import('./goodsyck-erp/pages/ContactPage'))
+const RequestDemoPage = lazy(() => import('./goodsyck-erp/pages/RequestDemoPage'))
 const ScrollToTop = lazy(() => import('./goodsyck-erp/components/ScrollToTop'))
 const ContactOptions = lazy(() => import('./goodsyck-erp/components/ContactOptions'))
 
@@ -92,6 +93,7 @@ function App() {
         <Route path="/erp/features" element={<FeaturesPage />} />
         <Route path="/erp/roles" element={<RolesPage />} />
         <Route path="/erp/contact" element={<ContactPage />} />
+        <Route path="/erp/request-demo" element={<RequestDemoPage />} />
 
         {/* Legacy redirects (keep old routes working) */}
         <Route path="/features" element={<FeaturesPage />} />
