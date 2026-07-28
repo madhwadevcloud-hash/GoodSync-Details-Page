@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
+
+// Base URL of the deployed GOODSYNK ERP app (the main login/dashboard project) —
+// override via VITE_API_BASE_URL. Sign In always routes to that app's /login page.
+const ERP_APP_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,6 +18,7 @@ const Navbar = () => {
   }, []);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const isSubPage = location.pathname.startsWith('/erp/');
 
   const navLinks = [
@@ -76,14 +81,17 @@ const Navbar = () => {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-6">
             <a
-              href="https://erp.goodsyck.com/"
+              href={`${ERP_APP_URL}/login`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-base font-black text-slate-800 hover:text-indigo-600 transition-colors tracking-tight"
             >
               Sign In
             </a>
-            <button className="group relative bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-6 py-2.5 rounded-xl font-black text-base shadow-xl shadow-indigo-200 flex items-center space-x-2 hover:scale-105 transition-all active:scale-95 overflow-hidden">
+            <button
+              onClick={() => navigate('/erp/request-demo')}
+              className="group relative bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-6 py-2.5 rounded-xl font-black text-base shadow-xl shadow-indigo-200 flex items-center space-x-2 hover:scale-105 transition-all active:scale-95 overflow-hidden"
+            >
               <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               <span>Request Demo</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -140,10 +148,19 @@ const Navbar = () => {
               </div>
               <div className="h-[1px] bg-slate-100 w-full" />
               <div className="flex flex-col space-y-6">
-                <button className="w-full py-6 text-2xl font-black text-slate-800 border-2 border-slate-100 rounded-[2rem] hover:border-indigo-200">
+                <button
+                  onClick={() => window.open(`${ERP_APP_URL}/login`, '_blank', 'noopener,noreferrer')}
+                  className="w-full py-6 text-2xl font-black text-slate-800 border-2 border-slate-100 rounded-[2rem] hover:border-indigo-200"
+                >
                   Log In
                 </button>
-                <button className="w-full py-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-2xl font-black rounded-[2rem] shadow-2xl shadow-indigo-200">
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate('/erp/request-demo');
+                  }}
+                  className="w-full py-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-2xl font-black rounded-[2rem] shadow-2xl shadow-indigo-200"
+                >
                   Request Demo
                 </button>
               </div>

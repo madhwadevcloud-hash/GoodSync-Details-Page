@@ -79,6 +79,7 @@ const Hero = () => {
             </motion.button>
 
             <motion.div
+              onClick={() => navigate('/erp/request-demo')}
               whileHover={{ x: 5 }}
               className="flex items-center justify-center space-x-4 group cursor-pointer w-full sm:w-auto"
             >
