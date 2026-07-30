@@ -27,8 +27,8 @@ const CONTACT_OPTIONS = [
     icon: Globe,
     title: 'GOODSYCK ERP',
     desc: 'Already using GOODSYCK ERP? Visit the app.',
-    value: 'goodsync-8x4v.onrender.com',
-    href: 'https://goodsync-8x4v.onrender.com',
+    value: 'd2epa0cquyol1f.cloudfront.net',
+    href: 'https://d2epa0cquyol1f.cloudfront.net/login',
     color: 'emerald',
   },
 ];
