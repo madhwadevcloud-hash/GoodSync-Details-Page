@@ -103,7 +103,7 @@ const MainNavbar = () => {
                 <div className="h-px bg-slate-100" />
                 <div className="flex flex-col gap-4">
                   <a
-                    href="https://goodsync-8x4v.onrender.com"
+                    href="https://d2epa0cquyol1f.cloudfront.net/login"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full text-center py-4 md:py-5 text-slate-800 font-black rounded-2xl border border-slate-200 hover:bg-slate-50 transition-colors text-lg"

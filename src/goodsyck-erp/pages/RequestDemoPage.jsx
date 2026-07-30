@@ -50,8 +50,12 @@ const RequestDemoPage = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
+    const targetUrl = API_BASE_URL.endsWith('/api')
+      ? `${API_BASE_URL}/demo-requests`
+      : `${API_BASE_URL.replace(/\/+$/, '')}/api/demo-requests`;
+
     try {
-      const response = await fetch(`${API_BASE_URL}/demo-requests`, {
+      const response = await fetch(targetUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
