@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import goodsyckLogo from '../../assets/goodsynk-nav-logo.png';
+import goodsyckLogoWebp from '../../assets/goodsynk-nav-logo.webp';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
@@ -27,7 +28,7 @@ const MainNavbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-500 py-3 ${isScrolled ? 'pt-2' : 'pt-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`relative flex items-center justify-between px-6 py-3 transition-all duration-700 rounded-2xl ${isScrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-xl shadow-slate-200/40 border border-slate-200/60'
+          ? 'bg-white/95 shadow-xl shadow-slate-200/40 border border-slate-200/60'
           : 'bg-transparent'
           }`}>
           {/* Logo */}
@@ -39,7 +40,16 @@ const MainNavbar = () => {
               transition={{ duration: 0.2 }}
               className="cursor-pointer"
             >
-              <img src={goodsyckLogo} alt="Goodsyck Logo" className="h-16 w-auto object-contain" />
+              <picture>
+                <source srcSet={goodsyckLogoWebp} type="image/webp" />
+                <img
+                  src={goodsyckLogo}
+                  alt="Goodsyck Logo"
+                  width={726}
+                  height={344}
+                  className="h-16 w-auto object-contain"
+                />
+              </picture>
             </motion.div>
           </Link>
 
@@ -79,7 +89,7 @@ const MainNavbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[-1] lg:hidden"
+              className="fixed inset-0 bg-slate-900/30 z-[-1] lg:hidden"
             />
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -87,7 +97,7 @@ const MainNavbar = () => {
               exit={{ opacity: 0, y: -10 }}
               className="absolute top-full left-0 right-0 px-4 pt-2 lg:hidden"
             >
-              <div className="bg-white/95 backdrop-blur-3xl rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 space-y-4 md:space-y-6">
+              <div className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 space-y-4 md:space-y-6">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}

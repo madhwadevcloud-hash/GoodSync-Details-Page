@@ -1,5 +1,6 @@
 import React from 'react';
 import goodsyckLogo from '../../assets/goodsynk-nav-logo.png';
+import goodsyckLogoWebp from '../../assets/goodsynk-nav-logo.webp';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Phone, MapPin, Globe, AtSign, Code2 } from 'lucide-react';
@@ -10,7 +11,17 @@ const MainFooter = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         {/* Brand */}
         <div className="md:col-span-2 space-y-6">
-          <img src={goodsyckLogo} alt="Goodsyck" className="h-16 w-auto object-contain" />
+          <picture>
+            <source srcSet={goodsyckLogoWebp} type="image/webp" />
+            <img
+              src={goodsyckLogo}
+              alt="Goodsyck"
+              width={726}
+              height={344}
+              loading="lazy"
+              className="h-16 w-auto object-contain"
+            />
+          </picture>
           <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
             Building the future of business operations — one intelligent software at a time.
           </p>

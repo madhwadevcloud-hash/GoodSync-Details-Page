@@ -2,8 +2,13 @@ import React, { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { motion, useScroll, useSpring } from 'framer-motion'
 
+// Entry route ('/') is imported eagerly, not via React.lazy — for the
+// homepage, lazy-loading adds an extra JS-chunk round trip before anything
+// can paint, which costs more on slower mobile connections. Secondary
+// routes stay lazy-loaded below.
+import MainHome from './main/pages/MainHome'
+
 // Brand-level pages — lazy loaded
-const MainHome = lazy(() => import('./main/pages/MainHome'))
 const AllProductsPage = lazy(() => import('./main/pages/AllProductsPage'))
 const AboutPage = lazy(() => import('./main/pages/AboutPage'))
 const MainContactPage = lazy(() => import('./main/pages/MainContactPage'))

@@ -1,5 +1,6 @@
 import React from 'react';
 import heroLogo from '../../assets/goodsynk-hero-logo.png';
+import heroLogoWebp from '../../assets/goodsynk-hero-logo.webp';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -98,53 +99,36 @@ const MainHome = () => (
       <AmbientBackground showIcons={false} />
 
       <div className="relative z-10 text-center max-w-5xl mx-auto pt-20 md:pt-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-        >
+        {/*
+          Above-the-fold hero content is rendered with plain CSS, not
+          Framer Motion opacity animations. On a slow/high-latency mobile
+          connection this content used to sit at opacity:0 until React +
+          Framer Motion finished loading and running, which is what caused
+          text to appear invisible or half-rendered on first load.
+        */}
+        <picture>
+          <source srcSet={heroLogoWebp} type="image/webp" />
           <img
             src={heroLogo}
             alt="Goodsync"
+            width={587}
+            height={425}
             className="h-40 md:h-48 lg:h-60 w-auto object-contain mx-auto mb-6 drop-shadow-sm"
           />
-        </motion.div>
+        </picture>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-black font-outfit tracking-tight leading-tight mb-6 text-slate-900"
-        >
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-outfit tracking-tight leading-tight mb-6 text-slate-900">
           Software That Works{' '}
-          <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-[length:200%_auto] animate-gradient bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 bg-clip-text text-transparent">
             As Hard As You Do
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto mb-12"
-        >
+        <p className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto mb-12">
           From school management to enterprise ERP — Goodsync delivers intelligent, reliable software for every operational need.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full px-2 sm:px-0"
-        >
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full px-2 sm:px-0">
           <Link
             to="/products"
             className="group flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-indigo-200 hover:scale-105 transition-all active:scale-95 w-full sm:w-auto"
@@ -158,7 +142,7 @@ const MainHome = () => (
           >
             View GOODSYCK ERP
           </Link>
-        </motion.div>
+        </div>
       </div>
 
 
