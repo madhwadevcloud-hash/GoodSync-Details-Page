@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import goodsyckLogo from '../../assets/goodsynk-nav-logo.png';
-import goodsyckLogoWebp from '../../assets/goodsynk-nav-logo.webp';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
@@ -10,9 +8,15 @@ const MainNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Cloudinary logo
+  const goodsyckLogo =
+    'https://res.cloudinary.com/dgabaplay/image/upload/v1777631691/3_wqplpc.png';
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -25,12 +29,19 @@ const MainNavbar = () => {
   const isActive = (to) => location.pathname === to;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-500 py-3 ${isScrolled ? 'pt-2' : 'pt-5'}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-500 py-3 ${
+        isScrolled ? 'pt-2' : 'pt-5'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`relative flex items-center justify-between px-6 py-3 transition-all duration-700 rounded-2xl ${isScrolled
-          ? 'bg-white/95 shadow-xl shadow-slate-200/40 border border-slate-200/60'
-          : 'bg-transparent'
-          }`}>
+        <div
+          className={`relative flex items-center justify-between px-6 py-3 transition-all duration-700 rounded-2xl ${
+            isScrolled
+              ? 'bg-white/95 shadow-xl shadow-slate-200/40 border border-slate-200/60'
+              : 'bg-transparent'
+          }`}
+        >
           {/* Logo */}
           <Link to="/">
             <motion.div
@@ -40,16 +51,13 @@ const MainNavbar = () => {
               transition={{ duration: 0.2 }}
               className="cursor-pointer"
             >
-              <picture>
-                <source srcSet={goodsyckLogoWebp} type="image/webp" />
-                <img
-                  src={goodsyckLogo}
-                  alt="Goodsyck Logo"
-                  width={726}
-                  height={344}
-                  className="h-16 w-auto object-contain"
-                />
-              </picture>
+              <img
+                src={goodsyckLogo}
+                alt="Goodsyck Logo"
+                width={726}
+                height={344}
+                className="h-16 w-auto object-contain"
+              />
             </motion.div>
           </Link>
 
@@ -59,11 +67,21 @@ const MainNavbar = () => {
               <Link
                 key={link.name}
                 to={link.to}
-                className={`text-base font-bold transition-all flex items-center gap-1 group ${isActive(link.to) ? 'text-gray-600' : 'text-slate-400 hover:text-gray-600'
-                  }`}
+                className={`text-base font-bold transition-all flex items-center gap-1 group ${
+                  isActive(link.to)
+                    ? 'text-gray-600'
+                    : 'text-slate-400 hover:text-gray-600'
+                }`}
               >
                 {link.name}
-                <ChevronDown className={`w-3 h-3 transition-all ${isActive(link.to) ? 'opacity-100 text-indigo-400' : 'opacity-0 group-hover:opacity-100 group-hover:translate-y-0.5'}`} />
+
+                <ChevronDown
+                  className={`w-3 h-3 transition-all ${
+                    isActive(link.to)
+                      ? 'opacity-100 text-indigo-400'
+                      : 'opacity-0 group-hover:opacity-100 group-hover:translate-y-0.5'
+                  }`}
+                />
               </Link>
             ))}
           </div>
@@ -74,7 +92,11 @@ const MainNavbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-3 rounded-2xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -91,6 +113,7 @@ const MainNavbar = () => {
               onClick={() => setIsMenuOpen(false)}
               className="fixed inset-0 bg-slate-900/30 z-[-1] lg:hidden"
             />
+
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -103,23 +126,30 @@ const MainNavbar = () => {
                     key={link.name}
                     to={link.to}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`flex items-center justify-between text-lg md:text-xl font-bold p-4 md:p-5 rounded-2xl transition-colors ${isActive(link.to) ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50'
-                      }`}
+                    className={`flex items-center justify-between text-lg md:text-xl font-bold p-4 md:p-5 rounded-2xl transition-colors ${
+                      isActive(link.to)
+                        ? 'bg-indigo-50 text-indigo-600'
+                        : 'text-slate-600 hover:bg-slate-50'
+                    }`}
                   >
                     {link.name}
+
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 ))}
+
                 <div className="h-px bg-slate-100" />
+
                 <div className="flex flex-col gap-4">
                   <a
-                    href="https://erp.goodsynk.com"
+                    href="https://d2epa0cquyol1f.cloudfront.net/login"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full text-center py-4 md:py-5 text-slate-800 font-black rounded-2xl border border-slate-200 hover:bg-slate-50 transition-colors text-lg"
                   >
                     Sign In
                   </a>
+
                   <Link
                     to="/products"
                     onClick={() => setIsMenuOpen(false)}
