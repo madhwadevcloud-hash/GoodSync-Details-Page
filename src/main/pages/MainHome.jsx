@@ -1,6 +1,4 @@
 import React from 'react';
-import heroLogo from '../../assets/goodsynk-hero-logo.png';
-import heroLogoWebp from '../../assets/goodsynk-hero-logo.webp';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -113,16 +111,22 @@ const MainHome = () => (
           Framer Motion finished loading and running, which is what caused
           text to appear invisible or half-rendered on first load.
         */}
-        <picture>
-          <source srcSet={heroLogoWebp} type="image/webp" />
-          <img
-            src={heroLogo}
-            alt="Goodsync"
-            width={587}
-            height={425}
-            className="h-40 md:h-48 lg:h-60 w-auto object-contain mx-auto mb-6 drop-shadow-sm"
-          />
-        </picture>
+        <img
+          src="https://res.cloudinary.com/dgabaplay/image/upload/f_auto,q_auto,w_600/v1777631691/2_usc5vr.png"
+          srcSet="
+            https://res.cloudinary.com/dgabaplay/image/upload/f_auto,q_auto,w_300/v1777631691/2_usc5vr.png 300w,
+            https://res.cloudinary.com/dgabaplay/image/upload/f_auto,q_auto,w_600/v1777631691/2_usc5vr.png 600w,
+            https://res.cloudinary.com/dgabaplay/image/upload/f_auto,q_auto,w_900/v1777631691/2_usc5vr.png 900w
+          "
+          sizes="(max-width: 768px) 160px, (max-width: 1024px) 192px, 240px"
+          alt="Goodsync"
+          width={587}
+          height={425}
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          className="h-40 md:h-48 lg:h-60 w-auto object-contain mx-auto mb-6 drop-shadow-sm"
+        />
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-outfit tracking-tight leading-tight mb-6 text-slate-900">
           Software That Works{' '}
