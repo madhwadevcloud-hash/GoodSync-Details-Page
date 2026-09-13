@@ -19,10 +19,24 @@ const PRODUCTS = [
     status: 'live',
     color: 'indigo',
     to: '/erp',
+    external: false,
     features: ['Student & Staff Management', 'Attendance & Results', 'Fee Collection', 'ID Card Generation', 'Hall Tickets', 'Parent Transparency App', 'RBAC Security', 'Analytics Dashboard'],
     cta: 'View Product',
   },
   {
+    id: 'invoice',
+    icon: FileText,
+    name: 'Goodsyck Invoice',
+    tagline: 'Smart invoicing for streamlined billing.',
+    desc: 'Intelligent invoice generation, tracking, and client management — automated and designed to eliminate billing friction.',
+    status: 'live',
+    color: 'sky',
+    to: 'https://invoice.goodsynk.com/',
+    external: true,
+    features: ['Auto Invoice Generation', 'Client Management', 'Payment Tracking', 'GST Compliance'],
+    cta: 'View Product',
+  },
+   {
     id: 'enterprise-erp',
     icon: Building2,
     name: 'Goodsyck Enterprise ERP',
@@ -32,16 +46,6 @@ const PRODUCTS = [
     color: 'violet',
     contact: 'Contact us for early access.',
     features: ['Multi-department Management', 'Enterprise Workflows', 'Advanced Reporting', 'API Integrations'],
-  },
-  {
-    id: 'invoice',
-    icon: FileText,
-    name: 'Goodsyck Invoice',
-    tagline: 'Smart invoicing for streamlined billing.',
-    desc: 'Intelligent invoice generation, tracking, and client management — automated and designed to eliminate billing friction.',
-    status: 'coming',
-    color: 'sky',
-    features: ['Auto Invoice Generation', 'Client Management', 'Payment Tracking', 'GST Compliance'],
   },
   {
     id: 'billing',
@@ -89,6 +93,7 @@ const colorMap = {
   sky: {
     bg: 'bg-sky-50', border: 'border-sky-100', icon: 'text-sky-600',
     glow: 'hover:shadow-sky-500/10', badge: 'bg-sky-100 text-sky-700', check: 'text-sky-600',
+    btn: 'from-sky-600 to-indigo-500 shadow-sky-200',
   },
   emerald: {
     bg: 'bg-emerald-50', border: 'border-emerald-100', icon: 'text-emerald-600',
@@ -103,6 +108,11 @@ const colorMap = {
     glow: 'hover:shadow-rose-500/10', badge: 'bg-rose-100 text-rose-700', check: 'text-rose-600',
   },
 };
+
+// Derived counts so the header stays accurate automatically as products
+// move from "coming" to "live" — no need to hand-edit the copy/numbers.
+const LIVE_COUNT = PRODUCTS.filter((p) => p.status === 'live').length;
+const COMING_COUNT = PRODUCTS.length - LIVE_COUNT;
 
 const AllProductsPage = () => {
   return (
@@ -138,7 +148,7 @@ const AllProductsPage = () => {
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-xl font-medium max-w-2xl mx-auto"
           >
-            One live product today. Five transformative solutions in the pipeline. All built to eliminate complexity and automate the ordinary.
+            {LIVE_COUNT} live products today. {COMING_COUNT} transformative solutions in the pipeline. All built to eliminate complexity and automate the ordinary.
           </motion.p>
 
           <motion.div
@@ -149,12 +159,12 @@ const AllProductsPage = () => {
           >
             <div className="flex items-center gap-2 text-sm font-bold">
               <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-emerald-600">1 Product Live</span>
+              <span className="text-emerald-600">{LIVE_COUNT} Products Live</span>
             </div>
             <div className="w-px h-4 bg-slate-200" />
             <div className="flex items-center gap-2 text-sm font-bold text-slate-500">
               <span className="w-2.5 h-2.5 bg-slate-300 rounded-full" />
-              5 Coming Soon
+              {COMING_COUNT} Coming Soon
             </div>
           </motion.div>
         </div>
@@ -166,6 +176,7 @@ const AllProductsPage = () => {
           {PRODUCTS.map((product, i) => {
             const c = colorMap[product.color];
             const Icon = product.icon;
+            const isLive = product.status === 'live';
             return (
               <motion.div
                 key={product.id}
@@ -173,7 +184,9 @@ const AllProductsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className={`group relative rounded-3xl border border-slate-200 bg-white hover:bg-slate-50/50 p-6 md:p-10 transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-2 ${c.glow} overflow-hidden`}
+                className={`group relative rounded-3xl border bg-white hover:bg-slate-50/50 p-6 md:p-10 transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-2 ${c.glow} overflow-hidden ${
+                  isLive ? 'border-emerald-200/70 ring-1 ring-emerald-100' : 'border-slate-200'
+                }`}
               >
                 {/* Hover Background Gradient */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-transparent to-${product.color}-50/50 transition-opacity duration-500`} />
@@ -187,7 +200,7 @@ const AllProductsPage = () => {
                       <div>
                         <div className="flex items-center gap-3 mb-1 flex-wrap">
                           <h2 className="text-2xl font-black text-slate-900 font-outfit group-hover:text-indigo-600 transition-colors">{product.name}</h2>
-                          {product.status === 'live' ? (
+                          {isLive ? (
                             <span className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs font-black px-3 py-1 rounded-full">
                               <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Live
                             </span>
@@ -214,14 +227,26 @@ const AllProductsPage = () => {
 
                   {/* Right CTA */}
                   <div className="flex flex-col items-stretch lg:items-end justify-center lg:justify-between gap-4 flex-shrink-0 w-full lg:w-auto">
-                    {product.status === 'live' ? (
-                      <Link
-                        to={product.to}
-                        className={`group/btn flex items-center justify-center gap-2 bg-gradient-to-r ${c.btn} text-white px-7 py-3.5 rounded-2xl font-black text-base shadow-xl hover:scale-105 transition-all active:scale-95 w-full lg:w-auto`}
-                      >
-                        {product.cta}
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Link>
+                    {isLive ? (
+                      product.external ? (
+                        <a
+                          href={product.to}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`group/btn flex items-center justify-center gap-2 bg-gradient-to-r ${c.btn} text-white px-7 py-3.5 rounded-2xl font-black text-base shadow-xl hover:scale-105 transition-all active:scale-95 w-full lg:w-auto`}
+                        >
+                          {product.cta}
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </a>
+                      ) : (
+                        <Link
+                          to={product.to}
+                          className={`group/btn flex items-center justify-center gap-2 bg-gradient-to-r ${c.btn} text-white px-7 py-3.5 rounded-2xl font-black text-base shadow-xl hover:scale-105 transition-all active:scale-95 w-full lg:w-auto`}
+                        >
+                          {product.cta}
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </Link>
+                      )
                     ) : (
                       <div className="text-center lg:text-right space-y-3 w-full lg:w-auto">
                         <span className="block bg-slate-50 border border-slate-200 text-slate-500 px-7 py-3.5 rounded-2xl font-bold text-base text-center w-full lg:w-auto">
