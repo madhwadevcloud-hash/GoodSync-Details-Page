@@ -21,6 +21,18 @@ const PRODUCTS = [
     status: 'live',
     color: 'indigo',
     to: '/erp',
+    external: false,
+  },
+  {
+    id: 'invoice',
+    icon: FileText,
+    name: 'Goodsyck Invoice',
+    tagline: 'Smart invoicing solution.',
+    desc: 'Streamlined billing operations with smart invoice generation, tracking, and client management.',
+    status: 'live',
+    color: 'sky',
+    to: 'https://invoice.goodsynk.com/',
+    external: true,
   },
   {
     id: 'enterprise-erp',
@@ -31,16 +43,6 @@ const PRODUCTS = [
     status: 'coming',
     color: 'violet',
     cta: 'Contact us for early access.',
-  },
-  {
-    id: 'invoice',
-    icon: FileText,
-    name: 'Goodsyck Invoice',
-    tagline: 'Smart invoicing solution.',
-    desc: 'Streamlined billing operations with smart invoice generation, tracking, and client management.',
-    status: 'coming',
-    color: 'sky',
-    cta: null,
   },
   {
     id: 'billing',
@@ -89,6 +91,11 @@ const WHY = [
   { icon: Globe, title: 'India-First Design', desc: 'Built from the ground up for Indian businesses, schools, and institutions.' },
   { icon: Sparkles, title: 'Constantly Evolving', desc: 'Continuous updates, new features, and products driven by real customer needs.' },
 ];
+
+// Derived counts so the section copy/badges stay accurate automatically
+// if more products go live later — no need to hand-edit the header text.
+const LIVE_COUNT = PRODUCTS.filter((p) => p.status === 'live').length;
+const COMING_COUNT = PRODUCTS.length - LIVE_COUNT;
 
 const MainHome = () => (
   <div className="min-h-screen bg-white text-slate-900 font-inter selection:bg-indigo-600/20 selection:text-indigo-900">
@@ -164,15 +171,27 @@ const MainHome = () => (
               Infinite Potential.
             </span>
           </h2>
-          <p className="text-slate-600 text-xl font-medium max-w-2xl mx-auto">
+          <p className="text-slate-600 text-xl font-medium max-w-2xl mx-auto mb-6">
             Each Goodsync product is built to eliminate friction, automate complexity, and help your business run flawlessly.
           </p>
+
+          {/* Live vs coming-soon status strip */}
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <span className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-black px-4 py-1.5 rounded-full">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+              {LIVE_COUNT} Products Live Now
+            </span>
+            <span className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 text-slate-500 text-sm font-black px-4 py-1.5 rounded-full">
+              {COMING_COUNT} Launching Soon
+            </span>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PRODUCTS.map((product, i) => {
             const c = colorMap[product.color];
             const Icon = product.icon;
+            const isLive = product.status === 'live';
             return (
               <motion.div
                 key={product.id}
@@ -180,13 +199,15 @@ const MainHome = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                className={`group relative rounded-3xl border border-slate-200 bg-white hover:bg-slate-50/50 p-6 md:p-8 transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-2 ${c.glow} overflow-hidden`}
+                className={`group relative rounded-3xl border bg-white hover:bg-slate-50/50 p-6 md:p-8 transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-2 ${c.glow} overflow-hidden ${
+                  isLive ? 'border-emerald-200/70 ring-1 ring-emerald-100' : 'border-slate-200'
+                }`}
               >
                 {/* Hover gradient background effect */}
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-transparent to-${product.color}-50/50 transition-opacity duration-500`} />
                 <div className="relative z-10">
                   {/* Live badge */}
-                  {product.status === 'live' && (
+                  {isLive && (
                     <div className="absolute top-6 right-6 flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs font-black px-3 py-1 rounded-full">
                       <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
                       Live
@@ -206,13 +227,24 @@ const MainHome = () => (
                   <p className={`text-sm font-bold ${c.icon} mb-3`}>{product.tagline}</p>
                   <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6">{product.desc}</p>
 
-                  {product.status === 'live' ? (
-                    <Link
-                      to={product.to}
-                      className={`inline-flex items-center gap-2 ${c.bg} border ${c.border} ${c.icon} px-5 py-2.5 rounded-xl text-sm font-black hover:scale-105 transition-all`}
-                    >
-                      View Product <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                  {isLive ? (
+                    product.external ? (
+                      <a
+                        href={product.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-2 ${c.bg} border ${c.border} ${c.icon} px-5 py-2.5 rounded-xl text-sm font-black hover:scale-105 transition-all`}
+                      >
+                        View Product <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    ) : (
+                      <Link
+                        to={product.to}
+                        className={`inline-flex items-center gap-2 ${c.bg} border ${c.border} ${c.icon} px-5 py-2.5 rounded-xl text-sm font-black hover:scale-105 transition-all`}
+                      >
+                        View Product <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    )
                   ) : (
                     <div>
                       <span className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 text-slate-500 px-5 py-2.5 rounded-xl text-sm font-bold">
@@ -310,7 +342,7 @@ const MainHome = () => (
               Ready to Transform Your Operations?
             </h2>
             <p className="text-white/80 text-xl font-medium mb-10 max-w-2xl mx-auto">
-              Start with GOODSYCK ERP today or get in touch to learn what's coming next.
+              Start with GOODSYCK ERP or Goodsyck Invoice today — both are live now. Get in touch to learn what's coming next.
             </p>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full">
               <Link
@@ -320,6 +352,15 @@ const MainHome = () => (
                 Explore GOODSYCK ERP
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
+              <a
+                href="https://invoice.goodsynk.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all w-full sm:w-auto"
+              >
+                Try Goodsyck Invoice
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
               <Link
                 to="/main-contact"
                 className="flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all w-full sm:w-auto"
